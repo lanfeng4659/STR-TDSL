@@ -1,5 +1,9 @@
 # Scene Text Retrieval via Joint Text Detection and Similarity Learning （CVPR2021）
 
+This is the code of "Scene Text Retrieval via Joint Text Detection and Similarity Learning". For more details, please refer to our [CVPR2021 paper](https://arxiv.org/pdf/2104.01552.pdf).
+
+This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark) and follows the same license.
+
 ## Chinese Street View Text Retrieval Dataset (CSVTR)
 
 CSVTR consists of 23 pre-defined query words in Chinese and 1667 Chinese scene text images collected from the Google image search engine. Each image is annotated with its corresponding query word among the 23 pre-defined Chinese query words. 
