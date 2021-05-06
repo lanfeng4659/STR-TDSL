@@ -10,4 +10,7 @@ CSVTR consists of 23 pre-defined query words in Chinese and 1667 Chinese scene t
 
 CSVTR could be downloaded from [baidu disk](https://pan.baidu.com/s/1CqKZ7zZL5U9uSsyBw0l3ag)(asjw) or [google driver](https://drive.google.com/file/d/1aC7_a3_2k7skeTT3EeM54UO76jpx9Pm4/view?usp=sharing).
 
+## Trained models
+The trained models could be downloaded from [baidu disk](https://pan.baidu.com/s/1vLR4EzXYyof-l69b621jog)(legq).
+
 ## Code will be avaliable soon.
