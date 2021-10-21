@@ -1,3 +1,4 @@
+import os
 import torch
 from torch import nn
 from torch.nn import functional as F
@@ -195,15 +196,13 @@ class AlignHead(nn.Module):
             self.text_generator = TextGenerator(ratios=[1,0,1,5],chars=lexicon)
         else:
             self.text_generator = TextGenerator()
-        self.image_embedding = RNNDecoder(in_channels, out_channels,bidirectional=True,use_look_up=self.use_look_up,use_res_link=self.use_res_link,use_rnn = (False if self.use_no_rnn else True),use_pyramid=self.use_pyramid,pyramid_layers=cfg.MODEL.ALIGN.PYRAMID_LAYERS)
+        self.image_embedding = RNNDecoder(in_channels, out_channels,bidirectional=True)
         self.word_embedding = WordEmbedding(out_channels=out_channels,
                       embedding_dim=256,
                       char_vector_dim=256,
                       max_length=resolution[1],
                       lexicon = self.text_generator.chars,
-                      bidirectional=True,
-                      use_res_link=self.use_res_link,
-                      use_rnn = (False if self.use_no_rnn else True),use_pyramid=self.use_pyramid,pyramid_layers=cfg.MODEL.ALIGN.PYRAMID_LAYERS)
+                      bidirectional=True)
         frames = resolution[1]
         if self.use_ctc_loss:
             self.ctc_head = CTCPredictor(out_channels,len(self.text_generator.chars)+1)
@@ -265,9 +264,7 @@ class AlignHead(nn.Module):
 
                     rois = self.pooler(x, [proposals_per_im])
                     select_boxes.append(proposals_per_im.bbox)
-
-                    dictionary = self.word_embedding.char_embedding.weight.clone().detach() if self.use_look_up else None
-                    imgs_embedding = self.image_embedding(rois,dictionary=dictionary)
+                    imgs_embedding = self.image_embedding(rois)
 
                     k = 1
 
