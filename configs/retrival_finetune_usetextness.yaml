@@ -1,0 +1,71 @@
+
+# aug: extract roi with predicted boxes: USE_BOX_AUG flag
+# OUTPUT_DIR: "Log/finetune_ic13_15_17_svt" #1280 0.81
+# OUTPUT_DIR: "Log/use_textness_ic13_15_17_add_textness_weight" #0.8319719599467301
+OUTPUT_DIR: "Log/use_textness_ic13_15_17_head_7x7_640" #0.8395682903027907
+MODEL:
+  META_ARCHITECTURE: "OneStage"
+  ONE_STAGE_HEAD: "align"
+  WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50"
+  WEIGHT: "./model_final2.pth"
+  RPN_ONLY: True
+  FCOS_ON: True
+  BACKBONE:
+    CONV_BODY: "R-50"
+  NECK:
+    CONV_BODY: "fpn-align"
+  # RETINANET:
+  #   USE_C5: False # FCOS uses P5 instead of C5
+  FCOS:
+    NUM_CLASSES: 2 # 0 for bg, 1 for text
+    # NMS_TH: 0.3
+  ALIGN:
+    USE_TEXTNESS: True
+    USE_BOX_AUG: False
+    NUM_CONVS: 2
+    POOLER_RESOLUTION: (4, 15)
+    # POOLER_RESOLUTION: (32, 128)
+    POOLER_SCALES: (0.25, 0.125, 0.0625) #must be aligned to feature maps 0.25 = feature_maps[0]/img_size
+DATASETS:
+  # TRAIN: ("svt_train",)
+  TRAIN: ("icdar17_train","icdar13_train","icdar15_train")
+  # TRAIN: ("icdar17_train",)
+  TEST: ("svt_test",)
+  # TEST: ("icdar15_test",)
+# INPUT:
+#   MIN_SIZE_RANGE_TRAIN: (640, 800)
+#   MAX_SIZE_TRAIN: 1333
+#   MIN_SIZE_TEST: 800
+#   MAX_SIZE_TEST: 1333
+DATALOADER:
+  SIZE_DIVISIBILITY: 32
+# SOLVER:
+#   BASE_LR: 0.001
+#   WEIGHT_DECAY: 0.0001
+#   STEPS: (30000,)
+#   MAX_ITER: 60000
+#   IMS_PER_BATCH: 8
+#   CHECKPOINT_PERIOD: 5000
+SOLVER:
+  BASE_LR: 0.001
+  WEIGHT_DECAY: 0.0001
+  STEPS: (30000,)
+  MAX_ITER: 50000
+  IMS_PER_BATCH: 8
+  CHECKPOINT_PERIOD: 2500
+TEST:
+  IMS_PER_BATCH: 1
+  BBOX_AUG:
+    ENABLED: False
+INPUT:
+  AUGMENT: "PSSAugmentation"
+  # MIN_SIZE_TEST: 480
+  # MAX_SIZE_TEST: 768
+
+  PIXEL_MEAN: [103.53, 116.28, 123.675]
+  PIXEL_STD: [57.375, 57.12, 58.395]
+
+  BRIGHTNESS: 0.125
+  CONTRAST: 0.125
+  SATURATION: 0.5
+  HUE: 0.5

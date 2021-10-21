@@ -1,0 +1,28 @@
+OUTPUT_DIR: output/align
+MODEL:
+  META_ARCHITECTURE: "OneStage"
+  ONE_STAGE_HEAD: "align"
+  WEIGHT: "model_tt_att.pth" 
+  FCOS_ON: True
+  BACKBONE:
+    CONV_BODY: "R-50"
+  NECK:
+    CONV_BODY: "fpn-align"
+  ALIGN:
+    POOLER_RESOLUTION: (7, 32)
+    POOLER_SCALES: (0.25, 0.125, 0.0625)
+    PREDICTOR: "attention" # "ctc" or "attention"
+DATASETS:
+  TRAIN: ("icdar15_train",) 
+  TEST: ("totaltext_test",) 
+DATALOADER:
+  SIZE_DIVISIBILITY: 32
+  NUM_WORKERS: 0
+INPUT:
+  PIXEL_MEAN: [103.53, 116.28, 123.675]
+  PIXEL_STD: [57.375, 57.12, 58.395]
+    # std_ = torch.tensor([[57.375, 57.12, 58.395]]).to(image.device)
+    # mean_ = torch.tensor([[103.53, 116.28, 123.675]]).to(image.device)
+
+
+

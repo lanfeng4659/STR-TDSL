@@ -1,0 +1,138 @@
+# OUTPUT_DIR: "Log/retrival_e2e_without_centerness" #0.8292275405326702 70000 step
+# OUTPUT_DIR: "Log/ic15_bbox"
+# OUTPUT_DIR: "Log/retrival_e2e_fix_bug" #0.8343403728936134 90000 step 
+# OUTPUT_DIR: "Log/retrival_e2e_without_centerness_fix_bug" #0.8407678613834894 90000 step 
+# OUTPUT_DIR: "Log/retrival_e2e_without_centerness_cls_fix_bug" #0.8454673095098002 90000 step 
+# OUTPUT_DIR: "Log/retrival4" #0.8564087611385056 90000 step    0.8541520106433798 70000 step
+# OUTPUT_DIR: "Log/retrival_e2e_without_centerness_cls_fix_bug" #0.8454673095098002 90000 step 
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss" #0.8694 90000 step 
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10" #0.8805036674399561 90000 step 
+# OUTPUT_DIR: "Log/temp" #0.8805036674399561 90000 step 
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_640_640"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_512_512"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_continue_train"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_use_iou_pred"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_second"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_third"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_fouth"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_5"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_1"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_20"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_50"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_init"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_train_6w"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b8"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b40"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b48"#SVT 85.47%
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_contrastive_wordaug_b64"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_charcount_b64"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_step_wordaug_b64"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_hanming_b64" # hard to learn
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64_twice"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_use_tanhstep_b64"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_commonspace_b64"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_tanh_step_wordaug_b64"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_tanh_step_wordaug_b64_no_centerness"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64_no_centerness_ngram"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_tanh_step_wordaug_b64_no_centerness"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64_no_centerness"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64_have_centerness"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64_have_centerness_vot" #86.11
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_tanh_step_wordaug_b64_have_centerness_vot"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64_have_centerness_vot_veri_lower"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64_have_centerness_vot_veri" #86.85
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64_have_centerness_vot_veri_along"
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64_no_centerness_vot_veri" #86.47
+# OUTPUT_DIR: "Log/retrival_e2e_add_retrieval_loss_10_colorjit_wordaug_b64_have_centerness_vot_veri_640"
+# OUTPUT_DIR: "Log/retrival_b64_lookup_vot_veri_640"
+# OUTPUT_DIR: "Log/retrival_b64_lookup_res_vot_veri_640"
+# OUTPUT_DIR: "Log/retrival_b64_lookup_nodetach_vot_veri_640"
+# OUTPUT_DIR: "Log/retrival_b64_lookup_nodetach_novisual_vot_veri_640"
+# OUTPUT_DIR: "Log/retrival_b64_domain_vot_veri_640"
+# OUTPUT_DIR: "Log/retrival_b64_domain2_vot_veri_640"
+OUTPUT_DIR: "Log/icdar2013"
+# OUTPUT_DIR: "Log/retrival_b64_domain_classifier_vot_veri_640"
+MODEL:
+  META_ARCHITECTURE: "OneStage"
+  ONE_STAGE_HEAD: "align"
+  WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50"
+  RPN_ONLY: True
+  FCOS_ON: True
+  BACKBONE:
+    CONV_BODY: "R-50"
+  NECK:
+    CONV_BODY: "fpn-align"
+  # RETINANET:
+  #   USE_C5: False # FCOS uses P5 instead of C5
+  FCOS:
+    NUM_CLASSES: 2 # 0 for bg, 1 for text
+    # NMS_TH: 0.3
+  ALIGN:
+    USE_NO_RNN: False
+    USE_DOMAIN_CLASSIFIER: True
+    USE_DOMAIN_ALIGN_LOSS: False
+    USE_RES_LINK: False
+    USE_LOOK_UP: False
+    USE_CHARACTER_AWARENESS: False
+    USE_ALONG_LOSS: False
+    USE_N_GRAM_ED: False
+    USE_COMMON_SPACE: False
+    USE_HANMING: False
+    USE_STEP: False
+    USE_CHAR_COUNT: False
+    USE_CONTRASTIVE_LOSS: False
+    USE_TEXTNESS: False
+    USE_IOU_PREDICTOR: False
+    USE_WORD_AUG: True
+    NUM_CONVS: 2
+    POOLER_RESOLUTION: (4, 15)
+    # POOLER_RESOLUTION: (32, 128)
+    POOLER_SCALES: (0.25, 0.125, 0.0625) #must be aligned to feature maps 0.25 = feature_maps[0]/img_size
+DATASETS:
+  TRAIN: ("synthtext90k","verisimilar")
+  # TRAIN: ("verisimilar",)
+  TEST: ("icdar13_test",)
+  # TEST: ("iiit_test",)
+  # TEST: ("cocotext_test",)
+# INPUT:
+#   MIN_SIZE_RANGE_TRAIN: (640, 800)
+#   MAX_SIZE_TRAIN: 1333
+#   MIN_SIZE_TEST: 800
+#   MAX_SIZE_TEST: 1333
+DATALOADER:
+  SIZE_DIVISIBILITY: 32
+  NUM_WORKERS: 8
+SOLVER:
+  BASE_LR: 0.01
+  WEIGHT_DECAY: 0.0001
+  STEPS: (30000,60000)
+  MAX_ITER: 90000
+  IMS_PER_BATCH: 4
+  CHECKPOINT_PERIOD: 2500
+# SOLVER:
+#   BASE_LR: 0.0001
+#   WEIGHT_DECAY: 0.0001
+#   STEPS: (60000,)
+#   MAX_ITER: 70000
+#   IMS_PER_BATCH: 16
+#   CHECKPOINT_PERIOD: 2500
+
+TEST:
+  IMS_PER_BATCH: 1
+  BBOX_AUG:
+    ENABLED: False
+INPUT:
+  AUGMENT: "SythAugmentation"
+  # MIN_SIZE_TEST: 480
+  # MAX_SIZE_TEST: 768
+
+  PIXEL_MEAN: [103.53, 116.28, 123.675]
+  PIXEL_STD: [57.375, 57.12, 58.395]
+
+  BRIGHTNESS: 0.125
+  CONTRAST: 0.125
+  SATURATION: 0.5
+  HUE: 0.5

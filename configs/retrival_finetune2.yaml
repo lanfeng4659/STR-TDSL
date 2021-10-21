@@ -1,0 +1,139 @@
+
+# OUTPUT_DIR: "Log/finetune_on_ic17"
+# OUTPUT_DIR: "Log/finetune_on_ic15_ic13"
+# OUTPUT_DIR: "Log/finetune_on_ic15_ic13_2"
+# OUTPUT_DIR: "Log/temp"
+# OUTPUT_DIR: "Log/finetune_on_ic17_1500"
+# OUTPUT_DIR: "Log/finetune_on_ic17_1500_train_continue"
+# OUTPUT_DIR: "Log/finetune_on_ic15"
+# OUTPUT_DIR: "Log/finetune_on_ic13"
+# OUTPUT_DIR: "Log/finetune_on_ic17_based_on_6853" #Log/finetune_on_ic17_based_on_6853/model_0075000.pth
+# OUTPUT_DIR: "Log/finetune_on_ic17_based_on_6853_nowordaug"
+# OUTPUT_DIR: "Log/finetune_on_ic17_look_up"
+# OUTPUT_DIR: "Log/finetune_on_ic17_look_up_continue"
+# OUTPUT_DIR: "Log/finetune_on_ic17_use_focal_l1"
+# OUTPUT_DIR: "Log/finetune_on_ic17_use_word_instance_aug"
+# OUTPUT_DIR: "Log/finetune_on_ic17_domain"
+# OUTPUT_DIR: "Log/finetune_on_ic17_domain3"
+# OUTPUT_DIR: "Log/finetune_on_ic17_domain3_train_more"
+# OUTPUT_DIR: "Log/finetune_on_ic17_domain3_1500_2gpus"
+# OUTPUT_DIR: "Log/finetune_on_ic17_1500_2gpus"
+# OUTPUT_DIR: "Log/finetune_on_ic17_1500_2gpus_nolower"
+# OUTPUT_DIR: "Log/finetune_on_ic17_1500_rec10_no_da_b64_vot_veri_640"
+# OUTPUT_DIR: "Log/finetune_on_ic17_rec10_no_da_b64_vot_veri_640"
+OUTPUT_DIR: "Log/finetune_on_ic17_rec10_no_da_b64_640"
+# OUTPUT_DIR: "Log/finetune_on_ic17_no_rec10_no_da_b64_640"
+# OUTPUT_DIR: "Log/finetune_on_ic17_no_rec10_nosampler_no_da_b64_640"
+# OUTPUT_DIR: "Log/finetune_on_ic17_only_rec_no_da_b64_640"
+MODEL:
+  META_ARCHITECTURE: "OneStage"
+  ONE_STAGE_HEAD: "align"
+  # WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50"
+  # WEIGHT: "./model_6875.pth"
+  # WEIGHT: "./model_6489.pth"
+  WEIGHT: "./model_6853.pth" # wordaug no-ctc
+  # WEIGHT: "./model_domain3_7078.pth"
+  # WEIGHT: "./model_domain3_7674.pth"
+  # WEIGHT: "./model_ic17_look_up_7591.pth"
+  # WEIGHT: "./model_rec_synth_7018.pth"
+  RPN_ONLY: True
+  FCOS_ON: True
+  BACKBONE:
+    CONV_BODY: "R-50"
+  NECK:
+    CONV_BODY: "fpn-align"
+  # RETINANET:
+  #   USE_C5: False # FCOS uses P5 instead of C5
+  FCOS:
+    NUM_CLASSES: 2 # 0 for bg, 1 for text
+    # NMS_TH: 0.3
+  ALIGN:
+    USE_CTC_LOSS: True
+    USE_GLOBAL_LOCAL_SIMILARITY: False
+    USE_DYNAMIC_SIMILARITY: False
+    USE_PYRAMID: False
+    USE_NO_RNN: False
+    USE_DOMAIN_CLASSIFIER: False
+    USE_DOMAIN_ALIGN_LOSS: False
+    USE_RES_LINK: False
+    USE_LOOK_UP: False
+    USE_CHARACTER_AWARENESS: False
+    USE_ALONG_LOSS: False
+    USE_N_GRAM_ED: False
+    USE_COMMON_SPACE: False
+    USE_HANMING: False
+    USE_STEP: False
+    USE_CHAR_COUNT: False
+    USE_CONTRASTIVE_LOSS: False
+    USE_TEXTNESS: False
+    USE_IOU_PREDICTOR: False
+    USE_WORD_AUG: False
+    NUM_CONVS: 2
+    POOLER_RESOLUTION: (4, 15)
+    # POOLER_RESOLUTION: (32, 128)
+    POOLER_SCALES: (0.25, 0.125, 0.0625) #must be aligned to feature maps 0.25 = feature_maps[0]/img_size
+DATASETS:
+  # TRAIN: ("icdar15_train","icdar13_train")
+  TRAIN: ("icdar17_train",)
+  # TRAIN: ("icdar15_train",)
+  # TRAIN: ("icdar13_train",)
+  # TRAIN: ("verisimilar",)
+  # TEST: ("svt_test",)
+  # TEST: ("iiit_test",)
+  TEST: ("totaltext_test",)
+  # TEST: ("cocotext_test",)
+  # TEST: ("iiit_test","cocotext_test",)
+  # TEST: ("chinese_collect",)
+# INPUT:
+#   MIN_SIZE_RANGE_TRAIN: (640, 800)
+#   MAX_SIZE_TRAIN: 1333
+#   MIN_SIZE_TEST: 800
+#   MAX_SIZE_TEST: 1333
+DATALOADER:
+  SIZE_DIVISIBILITY: 32
+  NUM_WORKERS: 8
+SOLVER:
+  BASE_LR: 0.001
+  WEIGHT_DECAY: 0.0001
+  STEPS: (40000,)
+  MAX_ITER: 80000
+  IMS_PER_BATCH: 16
+  CHECKPOINT_PERIOD: 2500
+# SOLVER:
+#   BASE_LR: 0.0001
+#   WEIGHT_DECAY: 0.0001
+#   STEPS: (20000,)
+#   MAX_ITER: 40000
+#   IMS_PER_BATCH: 16
+#   CHECKPOINT_PERIOD: 2500
+# SOLVER:
+#   BASE_LR: 0.0001
+#   WEIGHT_DECAY: 0.0001
+#   STEPS: (20000,)
+#   MAX_ITER: 40000
+#   IMS_PER_BATCH: 32
+#   CHECKPOINT_PERIOD: 2500
+# SOLVER:
+#   BASE_LR: 0.0001
+#   WEIGHT_DECAY: 0.0001
+#   STEPS: (60000,)
+#   MAX_ITER: 70000
+#   IMS_PER_BATCH: 16
+#   CHECKPOINT_PERIOD: 2500
+
+TEST:
+  IMS_PER_BATCH: 1
+  BBOX_AUG:
+    ENABLED: False
+INPUT:
+  AUGMENT: "PSSAugmentation"
+  # MIN_SIZE_TEST: 480
+  # MAX_SIZE_TEST: 768
+
+  PIXEL_MEAN: [103.53, 116.28, 123.675]
+  PIXEL_STD: [57.375, 57.12, 58.395]
+
+  BRIGHTNESS: 0.125
+  CONTRAST: 0.125
+  SATURATION: 0.5
+  HUE: 0.5
