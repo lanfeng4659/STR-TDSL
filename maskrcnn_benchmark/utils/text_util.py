@@ -75,13 +75,6 @@ class TextGenerator(object):
                 si[i][j] = 1-op[i][j]/max([i,j])
         # print(si)
         return si
-    # def resize_diag(self,si,max_len):
-    #     map2 = torch.nn.functional.interpolate(si[None,None,...], size=(max_len,max_len),mode='bilinear', align_corners=True)[0,0,...]
-    #     return torch.diagonal(map2)
-    def resize_diag(self,si,max_len):
-        # return torch.zeros([15])
-        map2 = torch.nn.functional.interpolate(si[None,None,...], size=(max_len,max_len),mode='bilinear', align_corners=True)[0,0,...]
-        return torch.diagonal(map2)
     def editdistance(self, word1, word2):
         return 1-editdistance.eval(word1,word2)/max(len(word1), len(word2))
     def calculate_similarity_matric(self, words1, words2):
@@ -93,28 +86,6 @@ class TextGenerator(object):
     def phoc_level_1(self, words):
         phoc1 = np.array([[1 if c in word else 0 for c in self.chars] for word in words]).reshape([len(words),len(self.chars)])
         return phoc1
-    def calculate_along_similarity_matric(self,similarity, words1, words2,use_self=False):
-        # device = similarity.device
-        max_len = similarity.size(2)
-        for i,word1 in enumerate(words1):
-            for j,word2 in enumerate(words2):
-                if use_self:
-                    temp = self.resize_diag(torch.tensor(self.similarity_on_pair(word1, word2))[1:,1:],max_len)
-                    print(temp)
-                    # self.similarity_on_pair(word1, word2)
-                else:
-                    # torch.tensor is time consuming
-                    # similarity[i,j,:] = self.resize_diag(torch.tensor(gen_geo_map.similarity_on_pair(np.array([word1]), np.array([word2]))),max_len)
-                    temp = torch.tensor(editdistance.alsm(word1,word2))
-                    print(temp)
-                    # editdistance.alsm(word1,word2)
-        return similarity
-    def compare_string(self, words1, words2):
-        similarity = np.zeros([len(words1), len(words2)])
-        for i,word1 in enumerate(words1):
-            for j,word2 in enumerate(words2):
-                similarity[i,j] = 1 if word1==word2 else 0
-        return similarity
     def filter_words(self, texts):
         idxs,new_texts = [], []
         for idx, text in enumerate(texts):

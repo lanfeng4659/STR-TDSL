@@ -53,41 +53,14 @@ class RNNDecoder(nn.Module):
             convs.append(conv_func(in_channels, in_channels, 3, stride=(2, 1)))
         self.convs = nn.Sequential(*convs)
         self.rnn = BidirectionalLSTM(in_channels, 256, out_channels) if self.use_rnn else nn.Linear(in_channels,out_channels)
-        self.use_look_up = use_look_up
-        self.use_res_link = use_res_link
-        self.use_pyramid = use_pyramid
-        if self.use_pyramid:
-            self.pyramid = PyramidFeatures(pyramid_layers)
-        if self.use_look_up:
-            self.look_up_model = nn.MultiheadAttention(in_channels, 1)
-            # self.selection = nn.Linear(2*in_channels,1)
-        if self.use_res_link:
-            self.pro = nn.Linear(in_channels, out_channels)
-    def look_up(self,q,k,v):
-        # print(q.shape,k.shape,v.shape)
-        feat,_ = self.look_up_model(q,k,v)
-        return feat
     def forward(self, x, dictionary=None):
         x = self.convs(x)
         x = x.mean(dim=2)  # NxCxW
         # assert x.size(-2) == 1, "the height of conv must be 1"
         # x = x.squeeze(2)
         x = x.permute(2, 0, 1)  # WxNxC
-        if self.use_look_up:
-            print("look_up")
-            dictionary = dictionary[:,None,:].repeat([1,x.size(1),1])
-            feat = self.look_up(x,dictionary,dictionary)
-            x = feat
-            # selection = self.selection(torch.cat([feat,x],dim=-1)).sigmoid()
-            # print(selection.shape,x.shape)
-            # x = selection*x + (1-selection)*feat
-        if self.use_res_link:
-            x = self.rnn(x)+ self.pro(x)
-        else:
-            x = self.rnn(x)
+        x = self.rnn(x)
         x = x.permute(1,0,2).contiguous()  # [b,w,c]
-        if self.use_pyramid:
-            x = self.pyramid(x)
         return x
 
 class BidirectionalLSTM(nn.Module):
@@ -129,12 +102,6 @@ class WordEmbedding(nn.Module):
         )
         # self.rnn = nn.LSTM(char_vector_dim, out_channels,num_layers=1,bidirectional=bidirectional)
         self.rnn = BidirectionalLSTM(char_vector_dim, 256, out_channels) if self.use_rnn else nn.Linear(char_vector_dim,out_channels)
-        self.use_res_link = use_res_link
-        self.use_pyramid = use_pyramid
-        if self.use_pyramid:
-            self.pyramid = PyramidFeatures(pyramid_layers)
-        if self.use_res_link:
-            self.pro = nn.Linear(256, out_channels)
     def forward(self,inputs):
         '''
         word: b, 256
@@ -156,14 +123,8 @@ class WordEmbedding(nn.Module):
         embeddings_batch = torch.cat(embeddings_batch,dim=1)[0] # [b, self.max_length, embedding_dim]
         char_vector = self.char_encoder(embeddings_batch)
         char_vector = char_vector.permute(1, 0, 2).contiguous() # [w, b, c]
-        
-        if self.use_res_link:
-            x = self.rnn(char_vector) + self.pro(char_vector)
-        else:
-            x = self.rnn(char_vector)
+        x = self.rnn(char_vector)
         x = x.permute(1,0,2).contiguous()  # [b,w,c]
-        if self.use_pyramid:
-            x = self.pyramid(x)
         return x
 
 class AlignHead(nn.Module):
@@ -218,10 +179,6 @@ class AlignHead(nn.Module):
         return words_embedding
 
     def compute_similarity(self,embedding1, embedding2,k=1):
-        if self.use_global_local_similarity:
-            return self.sim_func(embedding1,embedding2)
-        if self.use_dynamic_similarity:
-            return self.dynamic_similarity(embedding1, embedding2)
         embedding1_nor = nn.functional.normalize((embedding1*k).tanh().view(embedding1.size(0),-1))
         embedding2_nor = nn.functional.normalize((embedding2*k).tanh().view(embedding2.size(0),-1))
         inter = embedding1_nor.mm(embedding2_nor.t())
