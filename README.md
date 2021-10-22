@@ -19,15 +19,16 @@ An example of the path of test images: ./datasets/IIIT_STR_V1.0/imgDatabase/img_
 ### 2. evaluate
 run sh tools/test.sh
 
-## Citing the related work
+## Citing the related works
 
 Please cite the related works in your publications if it helps your research:
 
-  @InProceedings{Wang2021CVPR,  
+    @InProceedings{Wang_2021_CVPR,  
     author    = {Wang, Hao and Bai, Xiang and Yang, Mingkun and Zhu, Shenggao and Wang, Jing and Liu, Wenyu},  
     title     = {Scene Text Retrieval via Joint Text Detection and Similarity Learning},  
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},  
     month     = {June},  
     year      = {2021},  
     pages     = {4558-4567}  
-}
+    }
+
