@@ -19,7 +19,9 @@ The trained models could be downloaded from [baidu disk](https://pan.baidu.com/s
 ### 1. prepare datasets
 An example of the path of test images: ./datasets/IIIT_STR_V1.0/imgDatabase/img_000846.jpg
 ### 2. evaluate
-### run ```sh test.sh```
+#### run ```sh test.sh```
+
+## Training code (ToDo)
 
 ## Citing the related works
 
