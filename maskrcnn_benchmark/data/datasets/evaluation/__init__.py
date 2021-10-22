@@ -24,20 +24,15 @@ def evaluate(dataset, predictions, output_folder, **kwargs):
     )
     # if isinstance(dataset, datasets.WordDataset):
     #     return word_evaluation(**args)
-    if isinstance(dataset, datasets.Icdar15Dateset):
-        return ic15_detection_evaluation(**args)
-    elif isinstance(dataset, datasets.SVTDataset):
+
+    if isinstance(dataset, datasets.SVTDataset):
         return svt_retrieval_evaluation(**args)
     elif isinstance(dataset, datasets.IIITDataset):
         return iiit_retrieval_evaluation(**args)
     elif isinstance(dataset, datasets.COCOTextDataset):
         return cocotext_retrieval_evaluation(**args)
-    elif isinstance(dataset, datasets.CTWRetrievalDataset):
-        return ctw_retrieval_evaluation(**args)
     elif isinstance(dataset, datasets.ChineseCollectDataset):
         return chinese_collect_retrieval_evaluation(**args)
-    elif isinstance(dataset, datasets.TotalTextDateset):
-        return totaltext_retrieval_evaluation(**args)
     else:
         dataset_name = dataset.__class__.__name__
         raise NotImplementedError("Unsupported dataset type {}.".format(dataset_name))

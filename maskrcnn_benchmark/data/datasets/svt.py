@@ -105,27 +105,15 @@ class SVTDataset(torch.utils.data.Dataset):
             # print(polys.shape, polys)
             assert len(polys)==len(texts),print(polys,texts)
             aug_img, polys, tags = self.augment(img, polys, texts)
-            boxes = []#[[np.min(poly[:,0]), np.min(poly[:,1]), np.max(poly[:,0]), np.max(poly[:,1])] for poly in polys]
-            # # boxes = np.array(boxes).reshape([-1,4])
-            # order_polys = []
-            # boundarys = []
+            boxes = []
             for poly in polys:
                 boxes.append([np.min(poly[:,0]), np.min(poly[:,1]), np.max(poly[:,0]), np.max(poly[:,1])])
-                # boundarys.append(pts_expand)
-                # order_polys.append(get_ordered_polys(poly))
-            # cv2.drawContours(aug_img, polys.reshape([-1,4,2]).astype(np.int32),-1,color=(255,0,0),thickness=1)
-            # cv2.imwrite(os.path.join('vis',os.path.basename(path)), aug_img[:,:,(2,1,0)])
             boxes = np.array(boxes).reshape([-1,4])
-            # order_polys = np.array(order_polys).reshape([-1,8])
-            # boundarys = np.array(boundarys).reshape([-1,NUM_POINT*4])
             image = Image.fromarray(aug_img.astype(np.uint8)).convert('RGB')
 
             boxlist = BoxList(boxes, image.size, mode="xyxy")
-            # boxlist.add_field('polys',torch.tensor(order_polys))
-            # boxlist.add_field('boundarys',torch.tensor(boundarys))
             boxlist.add_field('labels',torch.tensor([-1 if text==self.dataset.difficult_label else 1 for text in tags]))
             boxlist.add_field('texts',tags)
-            # boxlist.add_field('texts',np.array(queries))
             if self.transforms:
                 image, boxlist = self.transforms(image, boxlist)
             # return the image, the boxlist and the idx in your dataset
@@ -139,31 +127,19 @@ class SVTDataset(torch.utils.data.Dataset):
             assert len(polys)==len(texts),print(polys,texts)
             aug_img, polys, tags = self.augment(img, polys, texts)
             test_h, test_w, _ = aug_img.shape
-            boxes = []#[[np.min(poly[:,0]), np.min(poly[:,1]), np.max(poly[:,0]), np.max(poly[:,1])] for poly in polys]
-            # # boxes = np.array(boxes).reshape([-1,4])
-            # order_polys = []
-            # boundarys = []
+            boxes = []
             for poly in polys:
                 boxes.append([np.min(poly[:,0]), np.min(poly[:,1]), np.max(poly[:,0]), np.max(poly[:,1])])
-                # boundarys.append(pts_expand)
-                # order_polys.append(get_ordered_polys(poly))
-            # cv2.drawContours(aug_img, polys.reshape([-1,4,2]).astype(np.int32),-1,color=(255,0,0),thickness=1)
-            # cv2.imwrite(os.path.join('vis',os.path.basename(path)), aug_img[:,:,(2,1,0)])
             boxes = np.array(boxes).reshape([-1,4])
-            # order_polys = np.array(order_polys).reshape([-1,8])
-            # boundarys = np.array(boundarys).reshape([-1,NUM_POINT*4])
             image = Image.fromarray(aug_img.astype(np.uint8)).convert('RGB')
 
             boxlist = BoxList(boxes, image.size, mode="xyxy")
-            # boxlist.add_field('polys',torch.tensor(order_polys))
-            # boxlist.add_field('boundarys',torch.tensor(boundarys))
             boxlist.add_field('labels',torch.tensor([-1 if text==self.dataset.difficult_label else 1 for text in tags]))
-            # boxlist.add_field('texts',tags)
             boxlist.add_field('texts',np.array(queries))
             boxlist.add_field('scale',np.array([ori_w/test_w, ori_h/test_h]))
             boxlist.add_field('path',np.array(path))
             boxlist.add_field("y_trues",self.dataset.y_trues)
-            # boxlist.add_field('test_texts',self.dataset.all_texts)
+            boxlist.add_field("det_thred", 0.05)
             if self.transforms:
                 image, boxlist = self.transforms(image, boxlist)
             # return the image, the boxlist and the idx in your dataset

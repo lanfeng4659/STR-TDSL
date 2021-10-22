@@ -251,9 +251,6 @@ class AlignModule(torch.nn.Module):
         self.use_retrieval = cfg.MODEL.ALIGN.USE_RETRIEVAL
         if self.use_retrieval:
             self.head = AlignHead(cfg, in_channels)
-        self.batch_size_per_image = 256 
-        self.positive_fraction = 0.25
-        self.use_textness = cfg.MODEL.ALIGN.USE_TEXTNESS
 
 
     def forward(self, images, features, targets=None, vis=False,is_words=None):
@@ -289,7 +286,7 @@ class AlignModule(torch.nn.Module):
                 # pos_idxs = torch.nonzero(scores>0.08).view(-1)
                 # pos_idxs = torch.nonzero(scores>0.05).view(-1)
                 # pos_idxs = torch.nonzero(scores>0.05).view(-1)
-                pos_idxs = torch.nonzero(scores>0.2).view(-1)#75.43
+                pos_idxs = torch.nonzero(scores>target.get_field("det_thred")).view(-1)#75.43
                 # pos_idxs = torch.nonzero(scores>0.23).view(-1)#75.43
                 box = box[pos_idxs]
                 box.add_field("texts", target.get_field("texts"))

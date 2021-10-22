@@ -91,6 +91,7 @@ class COCOTextDataset(torch.utils.data.Dataset):
             boxlist.add_field('scale',np.array([ori_w/test_w, ori_h/test_h]))
             boxlist.add_field('path',np.array(path))
             boxlist.add_field("y_trues",trues)
+            boxlist.add_field("det_thred", 0.2)
             # boxlist.add_field('test_texts',self.dataset.all_texts)
             if self.transforms:
                 image, boxlist = self.transforms(image, boxlist)
