@@ -13,4 +13,7 @@ CSVTR could be downloaded from [baidu disk](https://pan.baidu.com/s/1CqKZ7zZL5U9
 ## Trained models
 The trained models could be downloaded from [baidu disk](https://pan.baidu.com/s/1vLR4EzXYyof-l69b621jog)(legq).
 
-## Code will be avaliable soon.
+## Evaluation
+1. prepare datasets
+
+2. evaluate
