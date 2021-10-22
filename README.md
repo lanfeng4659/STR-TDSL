@@ -14,6 +14,18 @@ CSVTR could be downloaded from [baidu disk](https://pan.baidu.com/s/1CqKZ7zZL5U9
 The trained models could be downloaded from [baidu disk](https://pan.baidu.com/s/1vLR4EzXYyof-l69b621jog)(legq).
 
 ## Evaluation
-1. prepare datasets
+### 1. prepare datasets
+An example of the path of test images: ./datasets/IIIT_STR_V1.0/imgDatabase/img_000846.jpg
+### 2. evaluate
+run sh tools/test.sh
 
-2. evaluate
+## Citing the related work
+
+@InProceedings{Wang_2021_CVPR,
+    author    = {Wang, Hao and Bai, Xiang and Yang, Mingkun and Zhu, Shenggao and Wang, Jing and Liu, Wenyu},
+    title     = {Scene Text Retrieval via Joint Text Detection and Similarity Learning},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2021},
+    pages     = {4558-4567}
+}
