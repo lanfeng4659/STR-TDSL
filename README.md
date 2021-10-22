@@ -2,7 +2,7 @@
 
 This is the code of "Scene Text Retrieval via Joint Text Detection and Similarity Learning". For more details, please refer to our [CVPR2021 paper](https://openaccess.thecvf.com/content/CVPR2021/papers/Wang_Scene_Text_Retrieval_via_Joint_Text_Detection_and_Similarity_Learning_CVPR_2021_paper.pdf).
 
-![image](./framework6.pdf)
+![image](https://github.com/lanfeng4659/STR-TDSL/blob/main/framework.png)
 
 This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark) and follows the same license.
 
