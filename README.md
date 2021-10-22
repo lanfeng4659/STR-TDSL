@@ -1,6 +1,6 @@
 # Scene Text Retrieval via Joint Text Detection and Similarity Learning （CVPR2021）
 
-This is the code of "Scene Text Retrieval via Joint Text Detection and Similarity Learning". For more details, please refer to our [CVPR2021 paper](https://arxiv.org/pdf/2104.01552.pdf).
+This is the code of "Scene Text Retrieval via Joint Text Detection and Similarity Learning". For more details, please refer to our [CVPR2021 paper](https://openaccess.thecvf.com/content/CVPR2021/papers/Wang_Scene_Text_Retrieval_via_Joint_Text_Detection_and_Similarity_Learning_CVPR_2021_paper.pdf).
 
 This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark) and follows the same license.
 
