@@ -29,6 +29,10 @@ def evaluate(dataset, predictions, output_folder, **kwargs):
         return svt_retrieval_evaluation(**args)
     elif isinstance(dataset, datasets.IIITDataset):
         return iiit_retrieval_evaluation(**args)
+    elif isinstance(dataset, datasets.Icdar15Dateset):
+        return iiit_retrieval_evaluation(**args)
+    elif isinstance(dataset, datasets.ArTDataset):
+        return iiit_retrieval_evaluation(**args)
     elif isinstance(dataset, datasets.COCOTextDataset):
         return cocotext_retrieval_evaluation(**args)
     elif isinstance(dataset, datasets.ChineseCollectDataset):

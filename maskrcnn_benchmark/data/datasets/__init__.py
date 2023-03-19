@@ -6,6 +6,7 @@ from .iiit import IIITDataset
 from .cocotext import COCOTextDataset
 from .synthtext_chinese import SynthtextChineseDataset
 from .chinese_collect import ChineseCollectDataset
-
+from .ic15 import Icdar15Dateset
+from .art import ArTDataset
 __all__ = ["ConcatDataset","SynthtextChineseDataset", 
-"SynthText90kDateset","SVTDataset","IIITDataset","COCOTextDataset"]
+"SynthText90kDateset","SVTDataset","IIITDataset","COCOTextDataset", "Icdar15Dateset", "ArTDataset"]

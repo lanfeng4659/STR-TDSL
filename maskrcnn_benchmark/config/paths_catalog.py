@@ -16,6 +16,9 @@ class DatasetCatalog(object):
         "icdar15_test":{
             "data_dir":"icdar2015"
         },
+        "art_test":{
+            "data_dir":"ArT"
+        },
         "icdar13_train":{
             "data_dir":"icdar2013"
         },
@@ -154,6 +157,17 @@ class DatasetCatalog(object):
             )
             return dict(
                 factory="TotalTextDateset",
+                args=args,
+            )
+        elif "art" in name:
+            data_dir = DatasetCatalog.DATA_DIR
+            attrs = DatasetCatalog.DATASETS[name]
+            args = dict(
+                data_dir=os.path.join(data_dir, attrs["data_dir"]),
+                is_train=("train" in name)
+            )
+            return dict(
+                factory="ArTDataset",
                 args=args,
             )
         elif "mlt" in name:

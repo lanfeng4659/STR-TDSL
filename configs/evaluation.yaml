@@ -19,8 +19,10 @@ MODEL:
     POOLER_RESOLUTION: (4, 15)
     POOLER_SCALES: (0.25, 0.125, 0.0625) #must be aligned to feature maps 0.25 = feature_maps[0]/img_size
 DATASETS:
-  TEST: ("svt_test",)
-  # TEST: ("iiit_test",)
+  # TEST: ("svt_test",)
+  # TEST: ("icdar15_test",)
+  # TEST: ("art_test",)
+  TEST: ("iiit_test",)
   # TEST: ("cocotext_test",)
   # TEST: ("chinese_collect",)
 
