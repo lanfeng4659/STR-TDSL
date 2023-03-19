@@ -27,7 +27,11 @@ An example of the path of test images: ./datasets/IIIT_STR_V1.0/imgDatabase/img_
 ## Other datasets
 CTR could be downloaded from [baidu disk](https://pan.baidu.com/s/11XqNltuPbKeuz3QRSwkQxg)(e860).
 
-MLT-5k: This dataset is the subset of MLT2017. Please refer to [the code](https://github.com/lanfeng4659/STR-TDSL/blob/main/maskrcnn_benchmark/data/datasets/ic17.py) of extracting this subset.
+MLT-5k: This dataset is the subset of MLT2017(or MLT2019). Please refer to [the code](https://github.com/lanfeng4659/STR-TDSL/blob/main/maskrcnn_benchmark/data/datasets/ic17.py) of extracting this subset. Place the original datasets to the dir (datasets/MLT2019), such as:
+
+img path: ./datasets/MLT2019/train_images/tr_img_10000.jpg
+
+gt path: ./datasets/MLT2019/train_gts/tr_img_10000.txt
 
 ## Citing the related works
 
