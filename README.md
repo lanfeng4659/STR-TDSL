@@ -12,6 +12,7 @@ CSVTR consists of 23 pre-defined query words in Chinese and 1667 Chinese scene t
 
 CSVTR could be downloaded from [baidu disk](https://pan.baidu.com/s/1CqKZ7zZL5U9uSsyBw0l3ag)(asjw) or [google driver](https://drive.google.com/file/d/1aC7_a3_2k7skeTT3EeM54UO76jpx9Pm4/view?usp=sharing).
 
+
 ## Trained models
 The trained models could be downloaded from [baidu disk](https://pan.baidu.com/s/1vLR4EzXYyof-l69b621jog)(legq). (This model is only supported for English.)
 
@@ -22,6 +23,15 @@ An example of the path of test images: ./datasets/IIIT_STR_V1.0/imgDatabase/img_
 #### run ```sh tools/test.sh```
 
 ## Training code (ToDo)
+
+## Other datasets
+CTR could be downloaded from [baidu disk](https://pan.baidu.com/s/11XqNltuPbKeuz3QRSwkQxg)(e860).
+
+MLT-5k: This dataset is the subset of MLT2017(or MLT2019). Please refer to [the code](https://github.com/lanfeng4659/STR-TDSL/blob/main/maskrcnn_benchmark/data/datasets/ic17.py) of extracting this subset. Place the original datasets to the dir (datasets/MLT2019), such as:
+
+img path: ./datasets/MLT2019/train_images/tr_img_10000.jpg
+
+gt path: ./datasets/MLT2019/train_gts/tr_img_10000.txt
 
 ## Citing the related works
 
